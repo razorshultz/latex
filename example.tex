@@ -1,0 +1,67 @@
+\documentclass[onecolumn]{article}
+\usepackage{graphicx} % lets us use pictures
+\usepackage{capt-of} %lets us use captions on things other than floats
+\usepackage[parfill]{parskip} %stops indenting in new paragraphs
+\usepackage[hidelinks]{hyperref} %makes pdfs with clickable links and hides ugly
+%borders on them
+
+\usepackage{titling} %allows us to customise the title, which default latex classes don't do
+\usepackage{verbatim} %allows us to treat latex code as plain text
+\usepackage{microtype} % makes neat microtypography adjustments, however auto expansion only works with 
+%scalable fonts, so using some font packages may give a build error
+%\usepackage{helvet} %same as below, but we need to set \sfdefault as the default font family. This makes the text use our default sans serif font
+\usepackage{newcent} % here is the cool stuff - this means to use new century schoolbook as a roman font. if we use \rmdefault when we redefine \familydefault, it will use this font
+% because this command sets the default serif (roman/rm font) to new century. Before this font is used for text,
+% we  still need to use \\renewcommand{\familydefault}{\rmdefault} to use roman fonts as the default family
+\usepackage{mathpazo} % use palatino, a  serif, as rmdefault
+%\usepackage{lmodern} % using a font package alone is not enough, we have to select a sans-serif font family too, see below
+\renewcommand{\familydefault}{\rmdefault} % this changes \familydefault to  whatever argument you give, e.g your \rmdefault or 
+% \ttdefault or \sfdefault, is currently set to. Because we last included mathpazo, this is our current default serif font, and therefore also our default font is the serif family
+\usepackage[margin=1in, paperwidth=6in, paperheight=9in]{geometry}
+\usepackage{lipsum} %dummy text
+\renewcommand{\rmdefault}{pnc} %here we manually change the rmdefault font to new century schoolbook, since mathpazo was the latest serif font package included
+%it will have set itself as our current default serif font. pnc is the abbreviation for the new century schoolbook font
+
+\begin{document}
+
+%use \title from the titling package
+\title{Black Metal}
+
+%create all blank dates, which then removes the date from being printed in the title. this is from the titling package. you can do the same with \preauthor, \postauthor, and \author
+\predate{}
+\postdate{}
+\date{}
+
+\author{Me}
+\maketitle
+\thispagestyle{empty} %remove page number for title page
+
+
+\clearpage{} 
+\pagenumbering{Roman} %preface and frontmatter is numbered with roman numerals
+
+% use an aserisk after the \section command to remove numbering
+\section*{\centering
+Preface} %using \centering inside of braces means it will end with the next \par or brace, since it needs to have its scope limited by one of these, or will apply to the whole document
+
+Preface, The quick brown fox jumps over the lazy poodle
+
+
+{\fontfamily{pnc}\selectfont % this selects the font family pnc, which is the internal name for new century schoolbook, but we do it in a short bracketed environment
+\lipsum[1]. - New Century schoolbook}
+
+{\fontfamily{ppl}\selectfont  % this selects the font family ppl, which is the internal name for palatino, again contained in a short bracketed environment, the font goes back to century outside this
+\lipsum[1] - Palatino}
+
+\fontfamily{pnc}\selectfont % this manually selects the font family pnc, which is the internal name for new century schoolbook
+Hi
+
+\clearpage{}
+\pagenumbering{arabic}
+\section*{\centering Bands I Like}
+So here we have a list of bands I like, and the albums from them I like. Here I chart my current library from A to Z.
+
+\subsection*{Arkona}
+Their album \emph{An Eternal Curse of the Pagan Godz} has some awesome songs on it. My favourite is easily \mbox{\emph{Long Hard Winter}}.
+
+\end{document}
