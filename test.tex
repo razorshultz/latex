@@ -4,6 +4,10 @@
 \usepackage[parfill]{parskip} %stops indenting in new paragraphs
 \usepackage[hidelinks]{hyperref} %makes pdfs with clickable links and hides ugly
 %borders on them
+\usepackage{fancyhdr} %control of headers is better with this package
+
+\usepackage[style=apa]{biblatex} %use biblatex for citations
+\addbibresource{cites.bib} %add our file which contains our citations in bibtex format
 
 \usepackage{titling} %allows us to customise the title, which default latex classes don't do
 \usepackage{verbatim} %allows us to treat latex code as plain text
@@ -24,7 +28,7 @@
 
 \begin{document}
 
-%use \title from the titling package
+%use \title from the titling package.
 \title{Black Metal}
 
 %create all blank dates, which then removes the date from being printed in the title. this is from the titling package. you can do the same with \preauthor, \postauthor, and \author
@@ -34,17 +38,22 @@
 
 \author{Me}
 \maketitle
-\thispagestyle{empty} %remove page number for title page
+\thispagestyle{empty} %remove page number for title page.
+\clearpage{} %\clearpage actually always starts a new "page" while \newpagereally only ends the current column 
+
+\thispagestyle{empty} %suppress page numbering on contents page
+\renewcommand{\contentsname}{\centering Contents} %renew contentsname command so we can center the header
+\tableofcontents
+\newpage
 
 
-\clearpage{} 
 \pagenumbering{Roman} %preface and frontmatter is numbered with roman numerals
 
 % use an aserisk after the \section command to remove numbering
 \section*{\centering
 Preface} %using \centering inside of braces means it will end with the next \par or brace, since it needs to have its scope limited by one of these, or will apply to the whole document
 
-Preface, The quick brown fox jumps over the lazy poodle
+Preface, The quick brown fox jumps over the lazy poodle..
 
 
 {\fontfamily{pnc}\selectfont % this selects the font family pnc, which is the internal name for new century schoolbook, but we do it in a short bracketed environment
@@ -54,14 +63,28 @@ Preface, The quick brown fox jumps over the lazy poodle
 \lipsum[1] - Palatino}
 
 \fontfamily{pnc}\selectfont % this manually selects the font family pnc, which is the internal name for new century schoolbook
-Hi
+Hi.,
 
 \clearpage{}
 \pagenumbering{arabic}
 \section*{\centering Bands I Like}
-So here we have a list of bands I like, and the albums from them I like. Here I chart my current library from A to Z.
+%Entries of starred versions of sectional units (e.g \section*{}) can be inserted in the table of contents using \addcontentsline{toc}{<type>}{<content>}, where <type> is section, or subsection
+\addcontentsline{toc}{section}{\protect \numberline{} Bands I Like}
+So...... here we have a list of bands I like, and the albums from them I like. Here I chart my current library from A to Z.
+ 
 
 \subsection*{Arkona}
-Their album \emph{An Eternal Curse of the Pagan Godz} has some awesome songs on it. My favourite is easily \mbox{\emph{Long Hard Winter}}.
+Their album \emph{An Eternal Curse of the Pagan Godz} (\citeyear{nub}) has some awesome songs on it. My favourite is easily \mbox{\emph{Long Hard Winter}}.
+
+
+\clearpage{}
+\section*{\centering Nubbers}
+\addcontentsline{toc}{section}{\protect \numberline{} Nubbers}
+
+
+\printbibliography
+
+
 
 \end{document}
+
