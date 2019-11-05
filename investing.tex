@@ -1,0 +1,61 @@
+\documentclass[onecolumn]{article}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage[parfill]{parskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+
+\usepackage[style=apa]{biblatex}
+
+\usepackage{titling}
+\usepackage{verbatim}
+\usepackage{microtype}
+
+\usepackage{newcent} %new century schoolbook
+\usepackage{mathpazo}
+
+\renewcommand{\familydefault}{\rmdefault} %make serif the default font
+\renewcommand{\rmdefault}{pnc} %change the default font to new century schoolbook
+
+\usepackage[margin=1in, paperwidth=6in, paperheight=9in]{geometry}
+
+\begin{document}
+
+\title{Lessons on Investing}
+
+\predate{}
+\postdate{}
+\date{}
+
+
+%\fontfamily{pnc}\selectfont
+
+
+\author{Me}
+\maketitle
+\thispagestyle{empty}
+\clearpage{}
+
+
+\thispagestyle{empty}
+\renewcommand{\contentsname}{\centering Contents} %centre and set the heading of the contents page
+\tableofcontents
+\newpage
+
+\pagenumbering{Roman}
+\section*{\centering Preface}
+\addcontentsline{toc}{section}{\protect \numberline{} Preface}
+
+Hi
+
+\clearpage{}
+\pagenumbering{arabic}
+
+\section*{\centering Lesson One}
+Why hello there
+
+
+\printbibliography
+
+
+\end{document}
